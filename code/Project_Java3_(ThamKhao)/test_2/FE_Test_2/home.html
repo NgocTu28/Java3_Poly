@@ -1,0 +1,65 @@
+<div>
+    <h3 class="text-center">QUẢN LÝ CỬA HÀNG</h3>
+
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="col-lg-5">
+            <div class="mb-3">
+                <label for="" class="form-label">Mã</label>
+                <input type="text" class="form-control" ng-model="ma">
+                <small ng-bind="errorMa" class="text-danger"></small>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Tên</label>
+                <input type="text" class="form-control" ng-model="ten">
+                <small ng-bind="errorTen" class="text-danger"></small>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Thành phố</label>
+                <select class="form-select form-select-lg" ng-model="thanhPho" name="" id="">
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="Hải Phòng">Hải Phòng</option>
+                    <option value="Hòa Bình">Hòa bình</option>
+                </select>
+                <small ng-bind="errorThanhPho" class="text-danger"></small>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Địa chỉ</label>
+                <input type="text" class="form-control" ng-model="diaChi">
+                <small ng-bind="errorDiaChi" class="text-danger"></small>
+            </div>
+            <button type="button" class="btn btn-primary" ng-click="hienThi()">Hiển thị</button>
+            <button type="button" class="btn btn-success" ng-click="add()">Add</button>
+        </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center mt-3">
+        <div class="table-responsive col-lg-8">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ma</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">Thành phố</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cuaHang in listCuaHang track by $index">
+                        <td scope="row">{{$index + 1}}</td>
+                        <td>{{cuaHang.ma}}</td>
+                        <td>{{cuaHang.ten}}</td>
+                        <td>{{cuaHang.diaChi}}</td>
+                        <td>{{cuaHang.thanhPho}}</td>
+                        <td>
+                            <a class="btn btn-success" href="#update/{{cuaHang.id}}">Update</a>
+                            <button type="button" class="btn btn-danger" ng-click="remove(cuaHang.id)">Remove</button>
+                            <button type="button" class="btn btn-primary" ng-click="detail(cuaHang.id)">Detail</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
